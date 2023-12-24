@@ -1,0 +1,6 @@
+context=/registry/v1/
+port=1000
+api-key=abcdef
+username=user
+password=pass
+refresh-rate=30000

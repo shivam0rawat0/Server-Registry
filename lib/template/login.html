@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<script>
+	function login() {
+		var xhr = new XMLHttpRequest();
+		var postData = new FormData();
+		postData.append('user', document.getElementById("user").value);
+		postData.append('pass', document.getElementById("pass").value);
+		xhr.open('POST', "http://localhost:1000/registry/v1/login", true);
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				window.location = "http://localhost:1000/registry/v1/getList";
+			}
+		};
+		xhr.send(postData);
+	}
+
+	function key(e) {
+		console.log(e.keyCode);
+		if (e.keyCode == 13) login();
+	}
+</script>
+<style>
+	.ibox {
+		position: fixed;
+		height: 10%;
+		width: 40%;
+		left: 30%;
+	}
+
+	#user {
+		top: 30%;
+	}
+
+	#pass {
+		top: 40%;
+	}
+
+	#login {
+		top: 50%;
+	}
+</style>
+<div>
+	<input class="ibox" id="user" type="text">
+	<input class="ibox" id="pass" type="password">
+	<button class="ibox" id="login" onclick="login()" onkeypress="key(event)">Login</button>
+</div>
+
+</html>
